@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+
+class bank {
+    char name[100], add[100], y;
+    int balance;
+public:
+    void openAccount();
+    void depositeMoney();
+    void withdrawMoney();
+    void displayAccount();
+};
+
+void bank::openAccount() {
+    cout << "Enter your full name: " << endl;
+    cin.getline(name, 100);
+
+    cout << "Enter your address: " << endl;
+    cin.getline(add, 100);
+
+    cout << "What type of account do you want to open? " << endl;
+    cin >> y;
+
+    cout << "Enter amount for deposit: " << endl;
+    cin >> balance;
+
+    cout << "YOUR ACCOUNT IS CREATED" << endl;
+}
+
+void bank::depositeMoney() {
+    int amount;
+    cout << "Enter the amount you want to deposit: " << endl;
+    cin >> amount;
+    balance += amount;
+    cout << "Total amount you deposited is: " << balance << endl;
+}
+
+void bank::displayAccount() {
+    cout << "Your full name: " << name << endl;
+    cout << "Your address: " << add << endl;
+    cout << "Type of account you opened: " << y << endl;
+    cout << "Amount you deposited: " << balance << endl;
+}
+
+void bank::withdrawMoney() {
+    float amount;
+    cout << "Withdrawal" << endl;
+    cout << "Enter the amount to withdraw: " << endl;
+    cin >> amount;
+    balance -= amount;
+    cout << "Now the total amount left is: " << balance << endl;
+}
+
+int main() {
+    int ch;
+    bank obj;
+
+    do {
+        cout << "1. Open Account" << endl;
+        cout << "2. Deposit money" << endl;
+        cout << "3. Withdraw money" << endl;
+        cout << "4. Display Account" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Select an option from above: " << endl;
+        cin >> ch;
+
+        switch (ch) {
+        case 1:
+            obj.openAccount();
+            break;
+        case 2:
+            obj.depositeMoney();
+            break;
+        case 3:
+            obj.withdrawMoney();
+            break;
+        case 4:
+            obj.displayAccount();
+            break;
+        case 5:
+            cout << "Exiting..." << endl;
+            break;
+        default:
+            cout << "This is not an existing option. Try again." << endl;
+        }
+    } while (ch != 5);
+
+    return 0;
+}
